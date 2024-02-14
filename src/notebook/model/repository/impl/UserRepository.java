@@ -91,6 +91,7 @@ public class UserRepository implements GBRepository {
         List<User> users = findAll();
         users.removeAll(users);
         write(users);
+        //
     }
 
     @Override
