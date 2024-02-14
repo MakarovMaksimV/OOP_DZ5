@@ -3,6 +3,7 @@ package notebook.view;
 import notebook.controller.UserController;
 import notebook.model.User;
 import notebook.util.Commands;
+import notebook.util.UserValidator;
 
 import java.util.Scanner;
 
@@ -55,6 +56,8 @@ public class UserView {
         String firstName = prompt("Имя: ");
         String lastName = prompt("Фамилия: ");
         String phone = prompt("Номер телефона: ");
-        return new User(firstName, lastName, phone);
+        User user = new User(firstName,lastName,phone);
+        UserValidator validator = new UserValidator();
+        return validator.validate(new User(firstName,lastName,phone));
     }
 }
