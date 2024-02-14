@@ -40,7 +40,7 @@ public class UserView {
                         System.out.println(userController.readAll());
                     break;
                 case UPDATE:
-                    String userId = prompt("Enter user id: ");
+                    String userId = prompt("Идентификатор пользователя: ");
                     userController.updateUser(userId, createUser());
                     break;
                 case DELETE:

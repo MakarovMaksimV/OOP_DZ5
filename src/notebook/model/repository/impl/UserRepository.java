@@ -1,11 +1,14 @@
 package notebook.model.repository.impl;
 
 import notebook.model.dao.impl.FileOperation;
+import notebook.util.DBConnector;
 import notebook.util.UserValidator;
 import notebook.util.mapper.impl.UserMapper;
 import notebook.model.User;
 import notebook.model.repository.GBRepository;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +20,14 @@ public class UserRepository implements GBRepository {
     public UserRepository(FileOperation operation) {
         this.mapper = new UserMapper();
         this.operation = operation;
+    }
+
+    private void write(List<User> users) {
+        List<String> lines = new ArrayList<>();
+        for (User u: users) {
+            lines.add(mapper.toInput(u));
+        }
+        operation.saveAll(lines);
     }
 
     @Override
@@ -46,10 +57,6 @@ public class UserRepository implements GBRepository {
         return user;
     }
 
-    @Override
-    public Optional<User> findById(Long id) {
-        return Optional.empty();
-    }
 
     @Override
     public Optional<User> update(Long userId, User update) {
@@ -86,12 +93,21 @@ public class UserRepository implements GBRepository {
         write(users);
     }
 
-    private void write(List<User> users) {
-        List<String> lines = new ArrayList<>();
-        for (User u: users) {
-            lines.add(mapper.toInput(u));
+    @Override
+    public void saveAll(List<String> data) {
+        try (FileWriter writer = new FileWriter(DBConnector.DB_PATH, false)) {
+            for (String line : data) {
+                // запись всей строки
+                writer.write(line);
+                // запись по символам
+                writer.append('\n');
+            }
+            writer.flush();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
-        operation.saveAll(lines);
     }
+
+
 
 }
