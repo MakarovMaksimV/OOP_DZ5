@@ -9,8 +9,8 @@ public class UserValidator {
         }
 
         user.setFirstName(user.getFirstName().replaceAll(" ","").trim());
-        user.setLastName(user.getFirstName().replaceAll(" ","").trim());
-        user.setPhone(user.getFirstName().replaceAll(" ","").trim());
+        user.setLastName(user.getLastName().replaceAll(" ","").trim());
+        user.setPhone(user.getPhone().replaceAll(" ","").trim());
         return user;
     }
 
