@@ -47,6 +47,9 @@ public class UserView {
                     String idUser = prompt("Идентификатор пользователя: ");
                     userController.removeByIndex(idUser);
                     break;
+                case REMOVE:
+                    userController.removeAll();
+                    break;
             }
         }
     }

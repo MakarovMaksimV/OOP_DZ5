@@ -79,6 +79,13 @@ public class UserRepository implements GBRepository {
         write(users);
     }
 
+    @Override
+    public void deleteAll() {
+        List<User> users = findAll();
+        users.removeAll(users);
+        write(users);
+    }
+
     private void write(List<User> users) {
         List<String> lines = new ArrayList<>();
         for (User u: users) {
