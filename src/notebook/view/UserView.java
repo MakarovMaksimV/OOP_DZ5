@@ -5,6 +5,7 @@ import notebook.model.User;
 import notebook.util.Commands;
 import notebook.util.UserValidator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class UserView {
@@ -16,6 +17,7 @@ public class UserView {
 
     public void run(){
         Commands com;
+        System.out.println(Arrays.toString(Commands.values()));
 
         while (true) {
             String command = prompt("Введите команду: ");
