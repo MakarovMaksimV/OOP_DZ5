@@ -28,6 +28,7 @@ public class UserController {
         throw new RuntimeException("User not found");
     }
 
+
     public List<User> readAll() {
         return  repository.findAll();
     }

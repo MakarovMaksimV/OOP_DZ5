@@ -7,7 +7,6 @@ public class UserValidator {
         if(!isValid(user)){
             throw  new IllegalArgumentException("Введены не корректные данные");
         }
-
         user.setFirstName(user.getFirstName().replaceAll(" ","").trim());
         user.setLastName(user.getLastName().replaceAll(" ","").trim());
         user.setPhone(user.getPhone().replaceAll(" ","").trim());
@@ -15,8 +14,8 @@ public class UserValidator {
     }
 
     private boolean isValid(User user){
-        return !user.getFirstName().isEmpty() ||
-                !user.getLastName().isEmpty() ||
+        return !user.getFirstName().isEmpty() &&
+                !user.getLastName().isEmpty() &&
                 !user.getPhone().isEmpty();
     }
 }

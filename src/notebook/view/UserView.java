@@ -65,7 +65,8 @@ public class UserView {
         String lastName = prompt("Фамилия: ");
         String phone = prompt("Номер телефона: ");
         User user = new User(firstName,lastName,phone);
-        UserValidator validator = new UserValidator();
-        return validator.validate(new User(firstName,lastName,phone));
+//        UserValidator validator = new UserValidator();
+//        validator.validate(new User(firstName,lastName,phone));
+        return user;
     }
 }
