@@ -1,8 +1,6 @@
 package notebook.model.repository.impl;
 
-import notebook.model.dao.impl.FileOperation;
 import notebook.util.DBConnector;
-import notebook.util.UserValidator;
 import notebook.util.mapper.impl.UserMapper;
 import notebook.model.User;
 import notebook.model.repository.GBRepository;
@@ -12,26 +10,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static notebook.util.DBConnector.*;
+
 public class UserRepository implements GBRepository {
     private final UserMapper mapper;
-    private final FileOperation operation;
 
-    public UserRepository(FileOperation operation) {
+
+    public UserRepository() {
         this.mapper = new UserMapper();
-        this.operation = operation;
     }
+
 
     private void write(List<User> users) {
         List<String> lines = new ArrayList<>();
         for (User u: users) {
             lines.add(mapper.toInput(u));
         }
-        operation.saveAll(lines);
+        saveAll(lines);
     }
 
     @Override
     public List<User> findAll() {
-        List<String> lines = operation.readAll();
+        List<String> lines = readAll();
         List<User> users = new ArrayList<>();
         for (String line : lines) {
             users.add(mapper.toOutput(line));
@@ -95,7 +95,7 @@ public class UserRepository implements GBRepository {
 
     @Override
     public void saveAll(List<String> data) {
-        try (FileWriter writer = new FileWriter(DBConnector.DB_PATH, false)) {
+        try (FileWriter writer = new FileWriter(DB_PATH, false)) {
             for (String line : data) {
                 // запись всей строки
                 writer.write(line);
@@ -112,7 +112,7 @@ public class UserRepository implements GBRepository {
     public List<String> readAll() {
         List<String> lines = new ArrayList<>();
         try {
-            File file = new File(DBConnector.DB_PATH);
+            File file = new File(DB_PATH);
             //создаем объект FileReader для объекта File
             FileReader fr = new FileReader(file);
             //создаем BufferedReader с существующего FileReader для построчного считывания
