@@ -12,6 +12,10 @@ public interface GBRepository {
     void delete(Long id);
     void deleteAll();
     void saveAll(List<String> data);
+    List<String> readAll();
+
+
+
 
 
 }
