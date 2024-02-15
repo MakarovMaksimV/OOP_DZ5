@@ -68,7 +68,7 @@ public class UserRepository implements GBRepository {
             editUser.setFirstName(update.getFirstName());}
         if (!update.getLastName().isEmpty()){
         editUser.setLastName(update.getLastName());}
-            if (!update.getPhone().isEmpty()){
+        if (!update.getPhone().isEmpty()){
         editUser.setPhone(update.getPhone());}
         write(users);
         return Optional.of(update);
