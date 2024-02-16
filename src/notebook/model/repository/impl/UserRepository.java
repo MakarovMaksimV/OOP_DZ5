@@ -1,10 +1,8 @@
 package notebook.model.repository.impl;
 
-import notebook.util.DBConnector;
 import notebook.util.mapper.impl.UserMapper;
 import notebook.model.User;
 import notebook.model.repository.GBRepository;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +53,6 @@ public class UserRepository implements GBRepository {
         write(users);
         return user;
     }
-
 
     @Override
     public Optional<User> update(Long userId, User update) {

@@ -2,13 +2,13 @@ package notebook.util;
 
 public enum Commands {
 
-    REMOVE ("REMOVE - Удаление всеч записй"),
-    READ ("READ - Вывод запись по индексу"),
-    CREATE ("CREATE - Добавление новуй записи"),
-    UPDATE ("UPDATE - Обновление записи"),
-    LIST ("LIST - Вывод всех записей"),
-    DELETE ("DELETE - Удаление запись по индексу"),
-    EXIT ("EXIT - Выход");
+    REMOVE ("REMOVE - Удаление всех записей"),
+    READ ("\nREAD - Вывод запись по индексу"),
+    CREATE ("\nCREATE - Добавление новой записи"),
+    UPDATE ("\nUPDATE - Обновление записи"),
+    LIST ("\nLIST - Вывод всех записей"),
+    DELETE ("\nDELETE - Удаление запись по индексу"),
+    EXIT ("\nEXIT - Выход");
 
     private String title;
 

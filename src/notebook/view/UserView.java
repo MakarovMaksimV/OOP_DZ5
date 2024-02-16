@@ -17,9 +17,11 @@ public class UserView {
 
     public void run(){
         Commands com;
-        System.out.println(Arrays.toString(Commands.values()));
+
 
         while (true) {
+            System.out.println();
+            System.out.println(Arrays.toString(Commands.values()).replaceAll("^\\[|\\]$", ""));
             String command = prompt("Введите команду: ");
             com = Commands.valueOf(command.toUpperCase());
             if (com == Commands.EXIT) return;
@@ -67,8 +69,8 @@ public class UserView {
         String lastName = prompt("Фамилия: ");
         String phone = prompt("Номер телефона: ");
         User user = new User(firstName,lastName,phone);
-//        UserValidator validator = new UserValidator();
-//        validator.validate(new User(firstName,lastName,phone));
+        UserValidator validator = new UserValidator();
+        validator.validate(new User(firstName,lastName,phone));
         return user;
     }
 }
