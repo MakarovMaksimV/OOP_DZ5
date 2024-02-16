@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import notebook.util.UserValidator;
 
 import static notebook.util.DBConnector.*;
 

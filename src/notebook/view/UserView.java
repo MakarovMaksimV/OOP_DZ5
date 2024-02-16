@@ -17,11 +17,9 @@ public class UserView {
 
     public void run(){
         Commands com;
-
-
+        System.out.println(Arrays.toString(Commands.values()).replaceAll("^\\[|\\]$", ""));
         while (true) {
             System.out.println();
-            System.out.println(Arrays.toString(Commands.values()).replaceAll("^\\[|\\]$", ""));
             String command = prompt("Введите команду: ");
             com = Commands.valueOf(command.toUpperCase());
             if (com == Commands.EXIT) return;
